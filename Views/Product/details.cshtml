@@ -1,0 +1,11 @@
+using 
+@model Product
+
+<h1>@Model.Name</h1>
+
+<img src="@Model.ImageLink" alt="@Model.Name" />
+
+<p>@Model.Description</p>
+<p>Price: @Model.Price.ToString("C")</p>
+
+<a href="@Url.Action("Index", "Product")" class="btn btn-secondary">Back to Products</a>

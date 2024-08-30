@@ -1,0 +1,30 @@
+@model SA_Online_Mart.Models.Cart.Cart
+
+<h1>Your Cart</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.Product.Name</td>
+            <td>@item.Quantity</td>
+            <td>@item.Product.Price.ToString("C")</td>
+            <td>@(item.Quantity * item.Product.Price).ToString("C")</td>
+            <td><a href="@Url.Action("RemoveFromCart", "Cart", new { id = item.Product.Id })" class="btn btn-danger">Remove</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<p>Total: @Model.GetTotalPrice().ToString("C")</p>
+<a href="@Url.Action("Checkout", "Cart")" class="btn btn-primary">Proceed to Checkout</a>
